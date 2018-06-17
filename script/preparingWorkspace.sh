@@ -2,7 +2,7 @@
 
 # Making some folders that stores files during training
 
-mkdir -p mlf phones txt
+mkdir -p mlf phones txt gram 
 
 for i in {0..15}
 do
