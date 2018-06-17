@@ -24,8 +24,8 @@ MLF words
 perl script/prompts2mlf.pl mlf/words.mlf txt/prompts.txt
 
 MLF phones
-htk\HLEd -T 1 -l '*' -d txt/dict.txt -i mlf/phones0.mlf ins/mkphones0.led mlf/words.mlf
-htk\HLEd -T 1 -l '*' -d txt/dict.txt -i mlf/phones1.mlf ins/mkphones1.led mlf/words.mlf
+htk\HLEd -T 1 -l "*" -d txt/dict.txt -i mlf/phones0.mlf ins/mkphones0.led mlf/words.mlf
+htk\HLEd -T 1 -l "*" -d txt/dict.txt -i mlf/phones1.mlf ins/mkphones1.led mlf/words.mlf
 
 Tao list file train
 python script/listwavmfc.py c:/Active/WorkingProjects/vivos/train/waves/ txt/train.scp txt/train_mfc.scp
@@ -80,7 +80,7 @@ Tao trang thai rang buoc cho triphone
 perl script/mkFullList.pl phones/monophones0 phones/fulllist
 ---> Path file fulllist se duoc su dung lai trong tree.hed
 perl script/mkTree.pl 40 phones/monophones0 ins/tree.hed phones/fulllist
-htk\HHEd -T 1 -B -H hmm/hmm12/macros -H hmm/hmm12/hmmdefs -M hmm/hmm13 ins/tree.hed phones/triphones1 > log.txt
+htk\HHEd -B -H hmm/hmm12/macros -H hmm/hmm12/hmmdefs -M hmm/hmm13 ins/tree.hed phones/triphones1 > log.txt
 
 Tao hmm 14, 15
 htk\HERest -T 1 -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s stats -S txt/train_mfc.scp -H hmm/hmm13/macros -H hmm/hmm13/hmmdefs -M hmm/hmm14 tiedlist
