@@ -1,3 +1,6 @@
+# Chuan bi folder cho qua trinh chay
+sh script/preparingWorkspace.sh
+
 # prompts -> telex lower case
 python script/vietnameseToTelex.py c:/Active/WorkingProjects/vivos/train/prompts.txt txt/prompts.txt
 
@@ -32,9 +35,6 @@ python script/listwavmfc.py c:/Active/WorkingProjects/vivos/train/waves/ txt/tra
 
 # Rut dac trung bo train
 htk\HCopy -T 1 -C cfg/HCopy.cfg -S txt/train.scp
-
-# Tao hmm folder
-sh script/mkHmmDir.sh
 
 # Tao hmm 0
 htk\HCompV -T 1 -C cfg/HCompV.cfg -f 0.01 -m -S txt/train_mfc.scp -M hmm/hmm0 hmm/proto.template
