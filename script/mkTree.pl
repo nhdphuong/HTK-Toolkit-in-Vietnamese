@@ -16,7 +16,7 @@
 
 my ($threshold,$monophones,$tree);
 
-if ( @ARGV != 3 ){
+if ( @ARGV != 4 ){
    print "usage: $0 command threshold monophones1 tree fulllist";
    exit(1);
 
