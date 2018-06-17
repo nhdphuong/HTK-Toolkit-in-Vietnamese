@@ -21,3 +21,4 @@ htk/x64/HVite -C cfg/HVite.cfg -H hmm/hmm15/macros -H hmm/hmm15/hmmdefs -S txt/t
 htk/x64/HResults -I mlf/test_words.mlf phones/tiedlist mlf/recout.mlf | tee result.txt
 
 read
+
