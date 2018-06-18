@@ -28,7 +28,7 @@ python script/listwavmfc.py datasets/test/ txt/testLM.scp txt/testLM_mfc.scp
 htk/x64/HCopy -C cfg/HCopy.cfg -S txt/testLM.scp
 
 # Recognizing
-htk/x64/HDecode -H htmm/hmm15/macros -H htmm/hmm15/hmmdefs -S txt/testLM_mfc.scp -t 220.0 220.0 -C cfg/config.hdecode -i mlf/recoutLM.mlf -w gram/langmodel -p 0.0 -s 5.0 txt/dict.txt phones/tiedlist
+htk/x64/HDecode -H htmm/hmm15/macros -H htmm/hmm15/hmmdefs -S txt/testLM_mfc.scp -t 220.0 220.0 -C cfg/HDecode.cfg -i mlf/recoutLM.mlf -w gram/langmodel -p 0.0 -s 5.0 txt/dict.txt phones/tiedlist
 
 # Format Results
 htk/x64/HResults -I mlf/testLM_words.mlf phones/tiedlist mlf/recoutLM.mlf | tee resultLM.txt
