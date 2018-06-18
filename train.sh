@@ -92,9 +92,9 @@ htk/x64/HERest -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s p
 # Step 10 - Making Tied-State Triphones
 # hmm13
 perl script/mkFullList.pl phones/monophones0 phones/fulllist
-# ---> fulllist is configured in ins/tree.hed
-perl script/mkTree.pl 40 phones/monophones0 ins/tree.hed phones
-htk/x64/HHEd -B -H hmm/hmm12/macros -H hmm/hmm12/hmmdefs -M hmm/hmm13 ins/tree.hed phones/triphones1 | tee txt/log.txt
+# ---> fulllist is configured in txt/tree.hed
+perl script/mkTree.pl 40 phones/monophones0 txt/tree.hed phones
+htk/x64/HHEd -B -H hmm/hmm12/macros -H hmm/hmm12/hmmdefs -M hmm/hmm13 txt/tree.hed phones/triphones1 | tee txt/log.txt
 
 # hmm14, hmm15
 htk/x64/HERest -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s phones/stats -S txt/train_mfc.scp -H hmm/hmm13/macros -H hmm/hmm13/hmmdefs -M hmm/hmm14 phones/tiedlist
