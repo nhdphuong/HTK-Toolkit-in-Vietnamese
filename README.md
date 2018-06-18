@@ -8,3 +8,14 @@ Very simple script using HTK Toolkit of the Cambridge University Engineering Dep
 - VIVOS Corpus: https://ailab.hcmus.edu.vn/vivos
 - Self recording speech for evaluation
 
+## Datasets folder structure
+- eval: contain data using for evaluate the hmm system. This folder contain speech in word level in each recording file.
+-- waves: contain recording file in unique name. Each files is 1 word.
+-- prompts.txt: each line is description of each file with template: file_id text.
+- test: contain data using for recognizing. This folder contain speech in sentence level in each recording file.
+-- waves: contain recording file in unique name. Each files is 1 sentence.
+-- prompts.txt: each line is description of each file with template: file_id text.
+- train: contain data using for create hmm system. This folder contain speech in sentence level in each recording file.
+-- waves: contain recording file in unique name. Each files is 1 sentence.
+-- prompts.txt: each line is description of each file with template: file_id text.
+
