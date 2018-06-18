@@ -1,5 +1,5 @@
 #!/bin/sh -v
-set -v
+set -xv
 
 # Recognizer Evaluation
 # Step 11 - Recognizing the Test Data

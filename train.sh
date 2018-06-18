@@ -1,5 +1,5 @@
 #!/bin/sh -v
-set -v
+set -xv
 
 # Preparing folder for the run
 sh script/preparingWorkspace.sh

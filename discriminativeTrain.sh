@@ -1,5 +1,5 @@
 #!/bin/sh -v
-set -v
+set -xv
 
 # 1. Training cross-word triphone models
 #
