@@ -7,7 +7,7 @@ sh script/preparingWorkspace.sh
 # Preparing Data
 # Step 1 - the Task Grammar
 # prompts -> telex lower case
-python script/vietnameseToTelex.py c:/Active/WorkingProjects/anotherHTK/train/prompts.txt txt/prompts.txt
+python script/vietnameseToTelex.py datasets/train/prompts.txt txt/prompts.txt
 
 # prompts -> wlist
 perl script/prompts2wlist.pl txt/prompts.txt txt/wlist.txt
@@ -41,7 +41,7 @@ htk/x64/HLEd -l "*" -d txt/dict.txt -i mlf/phones1.mlf ins/mkphones1.led mlf/wor
 
 # Step 5 - Coding the Data
 # Generating training file list
-python script/listwavmfc.py c:/Active/WorkingProjects/anotherHTK/train/ txt/train.scp txt/train_mfc.scp
+python script/listwavmfc.py datasets/train/waves/ txt/train.scp txt/train_mfc.scp
 
 # Feature extraction
 htk/x64/HCopy -C cfg/HCopy.cfg -S txt/train.scp
