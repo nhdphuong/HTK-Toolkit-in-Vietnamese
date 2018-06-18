@@ -1,5 +1,9 @@
+gram/
 hmm/
 mlf/
 phones/
 txt/
 *.mfc
+result_eval.txt
+result_model.txt
+result_lm.txt
