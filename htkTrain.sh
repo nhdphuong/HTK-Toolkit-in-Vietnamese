@@ -93,7 +93,7 @@ htk/HERest -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s phone
 # hmm13
 perl script/mkFullList.pl phones/monophones0 phones/fulllist
 # ---> fulllist is configured in txt/tree.hed
-perl script/mkTree.pl 40 phones/monophones0 txt/tree.hed phones
+perl script/mkTree.pl 40 phones/monophones0 txt/tree.hed phones/
 htk/HHEd -B -H hmm/hmm12/macros -H hmm/hmm12/hmmdefs -M hmm/hmm13 txt/tree.hed phones/triphones1 | tee txt/log.txt
 
 # hmm14, hmm15
@@ -101,4 +101,4 @@ htk/HERest -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s phone
 htk/HERest -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s phones/stats -S txt/train_mfc.scp -H hmm/hmm14/macros -H hmm/hmm14/hmmdefs -M hmm/hmm15 phones/tiedlist
 
 echo "Training completed"
-read
+

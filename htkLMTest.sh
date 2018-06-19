@@ -18,4 +18,3 @@ htk/HDecode -H hmm/hmm15/macros -H hmm/hmm15/hmmdefs -S txt/testLM_mfc.scp -t 22
 # Format Results
 htk/HResults -I mlf/testLM_words.mlf phones/tiedlist mlf/recoutLM.mlf | tee result_lm.txt
 
-read
