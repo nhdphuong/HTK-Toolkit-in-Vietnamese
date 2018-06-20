@@ -4,11 +4,34 @@ set -xv
 # 1. Training cross-word triphone models
 # Removing sp and sil in monophones
 perl script/xw_mkMonophones.pl phones/monophones phones/xw_monophones
-cp phones/triphones1 phones/xw_unseen
 
-perl script/mkTree.pl 600.0 phones/xw_monophones txt/xw_tree.hed phones/xw_
+# Creating xw_triphones1
+cp phones/triphones1 phones/xw_triphones1
+
+# Creating xw_fulllist
+perl script/mkFullList.pl phones/monophones phones/xw_fulllist
+
+# hmm16
+perl script/mkTree.pl 40 phones/xw_monophones txt/xw_tree.hed phones/xw_
 cp phones/stats phones/xw_stats
+htk/HHEd -B -H hmm/hmm15/macros -H hmm/hmm15/hmmdefs -M hmm/hmm16 txt/xw_tree.hed phones/xw_triphones1 | tee txt/log.txt
 
+
+htk/HHEd -B -H hmm/hmm15/macros -H hmm/hmm15/hmmdefs -M hmm/hmm16 txt/xw_tree.hed phones/triphones1 | tee txt/xw_log.txt
+
+
+
+echo RO 100.0 phones/xw_stats > txt/xw_tree.hed
+perl script/mkclscript.pl TB 40 phones/xw_monophones >> txt/xw_tree.hed
+echo "AU "phones/xw_fulllist"
+CO "phones/xw_tiedlist"
+ST "phones/xw_trees"" >> txt/xw_tree.hed
+
+perl script/mkTree.pl 40 phones/xw_monophones txt/xw_tree.hed phones/xw_
+cp phones/stats phones/xw_stats
+cp phones/fulllist phones/xw_fulllist
+
+perl script/mkFullList.pl phones/monophones0 phones/fulllist
 htk/HHEd -B -H hmm/hmm15/macros -H hmm/hmm15/hmmdefs -M hmm/hmm16 txt/xw_tree.hed phones/xw_unseen | tee txt/xw_log.txt
 
 htk/HHEd -B -H hmm/hmm15/macros -H hmm/hmm15/hmmdefs -M hmm/hmm16 ins/xw_mktri.hed phones/monophones1

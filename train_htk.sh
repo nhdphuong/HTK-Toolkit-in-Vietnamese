@@ -7,7 +7,7 @@ sh script/preparingWorkspace.sh
 # Preparing Data
 # Step 1 - the Task Grammar
 # prompts -> telex lower case
-python script/vietnameseToTelex.py datasets/train/prompts.txt txt/prompts.txt
+python script/vietnameseToTelex.py datasets/train/prompts.txt txt/prompts_test.txt
 
 # prompts -> wlist
 perl script/prompts2wlist.pl txt/prompts.txt txt/wlist.txt
@@ -33,7 +33,7 @@ perl script/mkMonophones.pl phones/monophones phones/monophones0 phones/monophon
 
 # Step 4 - Creating the Transcription Files
 # MLF words
-perl script/prompts2mlf.pl mlf/words.mlf txt/prompts.txt
+perl script/prompts2mlf.pl mlf/words.mlf txt/prompts_test.txt
 
 # MLF phones
 htk/HLEd -l "*" -d txt/dict.txt -i mlf/phones0.mlf ins/mkphones0.led mlf/words.mlf
