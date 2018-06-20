@@ -2,31 +2,31 @@
 set -xv
 
 # Preparing folder for the run
-sh script/preparingWorkspace.sh
+# sh script/preparingWorkspace.sh
 
 # Preparing Data
 # Step 1 - the Task Grammar
 # prompts -> telex lower case
-python script/vietnameseToTelex.py datasets/train/prompts.txt txt/prompts_test.txt
+# python script/vietnameseToTelex.py datasets/train/prompts.txt txt/prompts_test.txt
 
 # prompts -> wlist
-perl script/prompts2wlist.pl txt/prompts_test.txt txt/wlist.txt
+# perl script/prompts2wlist.pl txt/prompts.txt txt/wlist.txt
 
 # gram.txt
-python script/wlistToGram.py txt/wlist.txt txt/gram.txt
+# python script/wlistToGram.py txt/wlist.txt txt/gram.txt
 
 # wdnet.txt
-htk/HParse txt/gram.txt txt/wdnet.txt
+# htk/HParse txt/gram.txt txt/wdnet.txt
 
 # Step 2 - the Dictionary
 # srcDict
-python script/splitWord.py txt/wlist.txt txt/srcDict.txt
+python script/xw_splitWord.py txt/wlist.txt txt/xw_srcDict.txt
 
 # HTK Dict & monophones
-htk/HDMan -m -w txt/wlist.txt -n phones/monophones -l txt/dict_log.txt txt/dict.txt txt/srcDict.txt
+htk/HDMan -m -w txt/wlist.txt -n phones/xw_monophones -l txt/xw_dict_log.txt txt/xw_dict.txt txt/xw_srcDict.txt
 
 # Other monophoes
-perl script/mkMonophones.pl phones/monophones phones/monophones0 phones/monophones1
+# perl script/mkMonophones.pl phones/monophones phones/monophones0 phones/monophones1
 
 # Step 3 - Recording the Data
 # Using Vivos datasets https://ailab.hcmus.edu.vn/vivos
@@ -83,7 +83,7 @@ htk/HERest -C cfg/HERest.cfg -I mlf/aligned.mlf -t 250.0 150.0 1000.0 -S txt/tra
 htk/HLEd -n phones/triphones1 -l "*" -i mlf/wintri.mlf ins/mktri.led mlf/aligned.mlf
 
 # hmm10
-perl script/mkTriHed.pl phones/monophones1 phones/triphones1 txt/mktri.hed
+perl scritp/mkTriHed.pl phones/monophones1 phones/triphones1 txt/mktri.hed
 htk/HHEd -B -H hmm/hmm9/macros -H hmm/hmm9/hmmdefs -M hmm/hmm10 txt/mktri.hed phones/monophones1
 
 # hmm11, hmm12
