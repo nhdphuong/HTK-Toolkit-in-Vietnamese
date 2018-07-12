@@ -99,9 +99,9 @@ htk/HERest -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s phone
 
 # Step 10 - Making Tied-State Triphones
 # hmm13
-perl script/mkFullList.pl phones/monophones0 phones/fulllist
+perl script/mkFullList.pl phones/monophones1 phones/fulllist
 # ---> fulllist is used in txt/tree.hed
-perl script/mkTree.pl 350 phones/monophones0 txt/tree.hed phones/
+perl script/mkTree.pl 350 phones/monophones1 txt/tree.hed phones/
 cp phones/stats12 phones/stats
 htk/HHEd -B -H hmm/hmm12/macros -H hmm/hmm12/hmmdefs -M hmm/hmm13 txt/tree.hed phones/triphones1 | tee txt/log.txt
 
