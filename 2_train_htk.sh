@@ -36,6 +36,8 @@ htk/HERest -C cfg/HERest.cfg -I mlf/aligned.mlf -t 250.0 150.0 1000.0 -S txt/tra
 # Creating Tied-State Triphones
 # Step 9 - Making Triphones from Monophones
 # If using mktri.hed then sil and sp will not be tie
+# mktri.led: internal triphones
+# xw_mktri.led: cross-word triphones
 #htk/HLEd -n phones/triphones1 -l "*" -i mlf/wintri.mlf ins/mktri.led mlf/aligned.mlf
 htk/HLEd -n phones/triphones1 -l "*" -i mlf/wintri.mlf ins/xw_mktri.led mlf/aligned.mlf
 
