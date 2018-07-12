@@ -7,23 +7,27 @@ sh script/preparingWorkspace.sh
 # Preparing Data
 # Step 1 - the Task Grammar
 # prompts -> telex lower case
-python script/vietnameseToTelex.py datasets/train/prompts.txt txt/prompts_test.txt
+python script/vietnameseToTelexPrompts.py datasets/train/prompts.txt txt/prompts_test_telex.txt
 
 # prompts -> wlist
-perl script/prompts2wlist.pl txt/prompts_test.txt txt/wlist.txt
+perl script/prompts2wlist.pl datasets/train/prompts.txt txt/wlist.txt
+python script/vietnameseToTelex.py txt/wlist.txt txt/wlist_telex_t.txt
+perl script/sort.pl txt/wlist_telex_t.txt txt/wlist_telex.txt
 
 # gram.txt
-python script/wlistToGram.py txt/wlist.txt txt/gram.txt
+python script/wlistToGram.py txt/wlist_telex.txt txt/gram.txt
 
 # wdnet.txt
 htk/HParse txt/gram.txt txt/wdnet.txt
 
 # Step 2 - the Dictionary
 # srcDict
-python script/splitWord.py txt/wlist.txt txt/srcDict.txt
+python script/splitWord.py txt/wlist.txt txt/srcDict_t.txt
+python script/vietnameseToTelex.py txt/srcDict_t.txt txt/srcDict_t.txt
+perl script/sort.pl txt/srcDict_t.txt txt/srcDict.txt
 
 # HTK Dict & monophones
-htk/HDMan -m -w txt/wlist.txt -n phones/monophones -l txt/dict_log.txt txt/dict.txt txt/srcDict.txt
+htk/HDMan -m -w txt/wlist_telex.txt -n phones/monophones -l txt/dict_log.txt txt/dict.txt txt/srcDict.txt
 
 # Other monophoes
 perl script/mkMonophones.pl phones/monophones phones/monophones0 phones/monophones1
@@ -33,7 +37,7 @@ perl script/mkMonophones.pl phones/monophones phones/monophones0 phones/monophon
 
 # Step 4 - Creating the Transcription Files
 # MLF words
-perl script/prompts2mlf.pl mlf/words.mlf txt/prompts_test.txt
+perl script/prompts2mlf.pl mlf/words.mlf txt/prompts_test_telex.txt
 
 # MLF phones
 htk/HLEd -l "*" -d txt/dict.txt -i mlf/phones0.mlf ins/mkphones0.led mlf/words.mlf

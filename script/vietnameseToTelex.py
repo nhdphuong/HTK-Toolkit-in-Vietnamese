@@ -194,7 +194,6 @@ f_output = open(sys.argv[2], "w", encoding="utf-8")
 
 # Replace the target string
 f_str = f_str.translate(replaceDict)
-f_str = re.sub(r"([^\s]*)(\s?)(.*?)(\n)", lambda match: match.group(1) + match.group(2) + match.group(3).lower() + match.group(4), f_str)
 
 f_output.write(f_str)
 
