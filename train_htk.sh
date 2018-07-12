@@ -85,7 +85,9 @@ htk/HERest -C cfg/HERest.cfg -I mlf/aligned.mlf -t 250.0 150.0 1000.0 -S txt/tra
 
 # Creating Tied-State Triphones
 # Step 9 - Making Triphones from Monophones
-htk/HLEd -n phones/triphones1 -l "*" -i mlf/wintri.mlf ins/mktri.led mlf/aligned.mlf
+# If using mktri.hed then sil and sp will not be tie
+#htk/HLEd -n phones/triphones1 -l "*" -i mlf/wintri.mlf ins/mktri.led mlf/aligned.mlf
+htk/HLEd -n phones/triphones1 -l "*" -i mlf/wintri.mlf ins/xw_mktri.led mlf/aligned.mlf
 
 # hmm10
 perl script/mkTriHed.pl phones/monophones1 phones/triphones1 txt/mktri.hed
@@ -98,8 +100,8 @@ htk/HERest -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s phone
 # Step 10 - Making Tied-State Triphones
 # hmm13
 perl script/mkFullList.pl phones/monophones0 phones/fulllist
-# ---> fulllist is configured in txt/tree.hed
-perl script/mkTree.pl 500 phones/monophones0 txt/tree.hed phones/
+# ---> fulllist is used in txt/tree.hed
+perl script/mkTree.pl 350 phones/monophones0 txt/tree.hed phones/
 cp phones/stats12 phones/stats
 htk/HHEd -B -H hmm/hmm12/macros -H hmm/hmm12/hmmdefs -M hmm/hmm13 txt/tree.hed phones/triphones1 | tee txt/log.txt
 

@@ -28,7 +28,7 @@ open (TREE,">$tree") || die ("Unable to open $tree file for writing");
 
 
 #modify here
-print TREE "RO 20 ".$output."stats\n";
+print TREE "RO 100 ".$output."stats\n";
 print TREE "TR 0\n";
 
 #QS here

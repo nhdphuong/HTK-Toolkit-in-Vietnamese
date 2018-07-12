@@ -25,7 +25,7 @@ open(OUT, ">$fulllist");
 
 my $monoCount = 0;
 
-# Output all monophones including sp
+# Output all monophones
 while($line = <IN>)
 {
     $line =~ s/[\n\r]//g;		
@@ -38,7 +38,7 @@ while($line = <IN>)
     }
 }
 close(IN);
-print OUT "sp\n";
+# print OUT "sp\n";
 
 # Now all possible left biphones
 my $i;
