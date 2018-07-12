@@ -7,10 +7,11 @@ sh script/preparingWorkspace.sh
 # Preparing Data
 # Step 1 - the Task Grammar
 # prompts -> telex lower case
-python script/vietnameseToTelexPrompts.py datasets/train/prompts.txt txt/prompts_test_telex.txt
+python script/lowerPrompts.py datasets/train/prompts.txt txt/prompts_test.txt
+python script/vietnameseToTelex.py txt/prompts_test.txt txt/prompts_test_telex.txt
 
 # prompts -> wlist
-perl script/prompts2wlist.pl datasets/train/prompts.txt txt/wlist.txt
+perl script/prompts2wlist.pl txt/prompts_test.txt txt/wlist.txt
 python script/vietnameseToTelex.py txt/wlist.txt txt/wlist_telex_t.txt
 perl script/sort.pl txt/wlist_telex_t.txt txt/wlist_telex.txt
 
@@ -98,7 +99,7 @@ htk/HERest -B -C cfg/HERest.cfg -I mlf/wintri.mlf -t 250.0 150.0 1000.0 -s phone
 # hmm13
 perl script/mkFullList.pl phones/monophones0 phones/fulllist
 # ---> fulllist is configured in txt/tree.hed
-perl script/mkTree.pl 40 phones/monophones0 txt/tree.hed phones/
+perl script/mkTree.pl 500 phones/monophones0 txt/tree.hed phones/
 cp phones/stats12 phones/stats
 htk/HHEd -B -H hmm/hmm12/macros -H hmm/hmm12/hmmdefs -M hmm/hmm13 txt/tree.hed phones/triphones1 | tee txt/log.txt
 
