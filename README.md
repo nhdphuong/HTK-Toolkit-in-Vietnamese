@@ -20,4 +20,13 @@ A very simple script using HTK Toolkit of the Cambridge University Engineering D
    * **prompts.txt**: each line is description of each file with template: file_id text.
 - **collection.txt**: a set of sentence that crawled from internet for buildin Language Model
 
+# Requirement Setup:
+- Perl
+- Python 3
+  + crawlerino requires beautifulsoup4
+  + Simple TTS requires pydub
+- SH for running the script
 
+All softwares can be installed easily using https://www.cygwin.com/
+
+All scripts are wrote to run on Windows but it is easily to modify the HTK executable for running on Linux or macOS
