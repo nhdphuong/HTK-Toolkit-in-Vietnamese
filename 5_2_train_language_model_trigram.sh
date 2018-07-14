@@ -16,7 +16,7 @@ htk/LGPrep -a 100000 -b 200000 -n 3 -d gram/trigram gram/trigram/empty.wmap txt/
 htk/LBuild -c 2 0 -c 3 0 gram/trigram/wmap gram/trigram/langmodel gram/trigram/gram.*
 
 # Testing the LM perplexity
-htk/LPlex -t gram/trigram/langmodel txt/collection.txt | tee result_model.txt
+htk/LPlex -t gram/trigram/langmodel txt/collection.txt | tee result_model_tri.txt
 
 echo "Training completed"
 
